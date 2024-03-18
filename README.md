@@ -1,4 +1,5 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# DressUp
+Jocul DressUp implementat in C++ are la baza customizarea unui avatar, cu ajutorul unor diverse articole vestimentare, alese de catre jucator dupa preferintele personale. Jucatorul isi poate alege pana si trasaturile, de la culoarea ochilor, pana la fizionomia corpului. 
 
 ### Important!
 Aveți voie cu cod generat de modele de limbaj la care nu ați contribuit semnificativ doar în folder-ul `generated`.
