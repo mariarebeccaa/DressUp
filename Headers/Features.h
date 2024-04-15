@@ -30,13 +30,13 @@ protected:
 
 public:
    // Features(const std::string &name);
-   explicit Features(const string &name);
+   explicit Features(string name);
 
     //const string &getName() const;
-    const string &getName() const;
+    [[nodiscard]] const string &getName() const;
 
     //void setName(const string &name);
-    void setName(const string &name);
+    [[maybe_unused]] void setName(const string &name);
 
 
 };

@@ -22,7 +22,7 @@ Avatar& Avatar::operator=(const Avatar& other) {
     return *this;
 }
 
-Avatar::~Avatar() {}
+Avatar::~Avatar() = default;
 
 
 Avatar::Avatar(const string &name, const string &gender, int age, const vector<Features *> &features,
@@ -45,7 +45,7 @@ const vector<Features *> &Avatar::getFeatures() const {
 }
 
 ostream &operator<<(ostream &os, const Avatar &avatar) {
-    os << "name: " << avatar.name <<"\n"<< " gender: " << avatar.gender <<"\n"<< " age: " << avatar.age <<"\n"<< "features: "<<"\n";
+    os << "name: " << avatar.name <<"\n"<< " gender: " << avatar.gender <<"\n"<< " age: " << avatar.age <<"\n"<< " features: ";
        //<< avatar.features << " clothing: ";
 
     // Iterează prin vectorul de pointeri la obiecte Features și afișează fiecare element
@@ -53,7 +53,7 @@ ostream &operator<<(ostream &os, const Avatar &avatar) {
         os << item->getName() << ", "; // Afișează numele fiecărui obiect Features
     }
 
-    os << " clothing: ";
+    os <<"\n"<< " clothing: ";
     // Iterează prin vectorul de pointeri la obiecte Clothing și afișează fiecare element
     for (const auto& item : avatar.clothing) {
         os << item->getName() << ", "; // Afișează numele fiecărui obiect Clothing
@@ -62,7 +62,6 @@ ostream &operator<<(ostream &os, const Avatar &avatar) {
 }
 
 
-Avatar::Avatar() {}
 
 
 

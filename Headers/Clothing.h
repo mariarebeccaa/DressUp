@@ -15,11 +15,11 @@ protected:
     string name;
 
 public:
-    Clothing(const std::string &name);
+    explicit Clothing(const std::string &name);
 
-    const string &getName() const;
+    [[nodiscard]] const string &getName() const;
 
-    void setName(const string &name);
+    [[maybe_unused]] void setName(const string &name);
 
 
 };

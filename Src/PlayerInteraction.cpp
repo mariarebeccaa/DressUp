@@ -1,7 +1,5 @@
 #include <iostream>
 #include "../Headers/PlayerInteraction.h"
-#include "../Headers/Features.h"
-#include "../Headers/AvailableFeatures.h"
 
 std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeatures &availableFeatures) {
     std::vector<Features *> chosenFeatures;
@@ -26,7 +24,7 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                     }
                     int eyesChoice;
                     std::cin >> eyesChoice;
-                    if (eyesChoice > 0 &&eyesChoice <= eyesTypes.size()) {
+                    if (eyesChoice > 0 && eyesChoice <= int(eyesTypes.size())) {
                         chosenFeatures.push_back(new EyesType(eyesTypes[eyesChoice - 1].getName()));
                     }
                     break;
@@ -39,7 +37,7 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                     }
                     int hairChoice;
                     std::cin >> hairChoice;
-                    if (hairChoice > 0 && hairChoice <= hairTypes.size()) {
+                    if (hairChoice > 0 && hairChoice <= int(hairTypes.size())) {
                         chosenFeatures.push_back(new HairType(hairTypes[hairChoice - 1].getName()));
                     }
                     break;
@@ -52,7 +50,7 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                     }
                     int bodyChoice;
                     std::cin >> bodyChoice;
-                    if (bodyChoice > 0 && bodyChoice <= bodyTypes.size()) {
+                    if (bodyChoice > 0 && bodyChoice <= int(bodyTypes.size())) {
                         chosenFeatures.push_back(new BodyType(bodyTypes[bodyChoice - 1].getName()));
                     }
                     break;
@@ -90,7 +88,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int headChoice;
                     std::cin >> headChoice;
-                    if (headChoice > 0 && headChoice <= headItems.size()) {
+                    if (headChoice > 0 && headChoice <= int(headItems.size())) {
                         chosenClothing.push_back(new HeadItem(headItems[headChoice - 1].getName()));
                     }
                     break;
@@ -103,7 +101,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int topChoice;
                     std::cin >> topChoice;
-                    if (topChoice > 0 && topChoice <= topItems.size()) {
+                    if (topChoice > 0 && topChoice <= int(topItems.size())) {
                         chosenClothing.push_back(new TopItem(topItems[topChoice - 1].getName()));
                     }
                     break;
@@ -116,7 +114,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int buttomChoice;
                     std::cin >> buttomChoice;
-                    if (buttomChoice > 0 && buttomChoice <= buttomItems.size()) {
+                    if (buttomChoice > 0 && buttomChoice <= int(buttomItems.size())) {
                         chosenClothing.push_back(new ButtomItem(buttomItems[buttomChoice - 1].getName()));
                     }
                     break;
@@ -129,7 +127,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int shoesChoice;
                     std::cin >> shoesChoice;
-                    if (shoesChoice > 0 && shoesChoice <= shoesItems.size()) {
+                    if (shoesChoice > 0 && shoesChoice <= int(shoesItems.size())) {
                         chosenClothing.push_back(new TopItem(shoesItems[shoesChoice - 1].getName()));
                     }
                     break;

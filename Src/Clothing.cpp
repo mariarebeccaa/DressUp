@@ -9,6 +9,6 @@ const string &Clothing::getName() const {
     return name;
 }
 
-void Clothing::setName(const string &name) {
+[[maybe_unused]] void Clothing::setName(const string &name) {
     Clothing::name = name;
 }
