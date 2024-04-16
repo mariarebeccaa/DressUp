@@ -11,7 +11,9 @@ public:
 
     friend ostream &operator<<(ostream &os, const TopItem &item);
 
-    bool verifyAvailabilityClothingObj() const;
+    [[nodiscard]] std::string getDetail() const override;
+
+    [[nodiscard]] TopItem* clone() const override;
 };
 
 

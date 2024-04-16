@@ -16,9 +16,17 @@ public:
 
     friend ostream &operator<<(ostream &os, const HairType &item);
 
-    std::string getDetail() const override;
+    // Constructorul de copiere
+    HairType(const HairType &other);
+    // Operatorul de atribuire
+    HairType& operator=(const HairType& other);
 
-    HairType* clone() const;
+    [[nodiscard]] std::string getDetail() const override;
+
+    [[nodiscard]] HairType* clone() const override;
+
+private:
+    static void swap(HairType& first, HairType& second) noexcept;
 };
 
 

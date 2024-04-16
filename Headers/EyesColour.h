@@ -17,17 +17,19 @@ public:
 
     friend ostream &operator<<(ostream &os, const EyesColour &item);
 
-//    // Copy constructor
-    //EyesColour(const EyesColour& other);
-//
-//    // Assignment operator
-    //EyesColour& operator=(const EyesColour& other) ;
+    // Constructorul de copiere
+    EyesColour(const EyesColour &other);
+    // Operatorul de atribuire
+    EyesColour& operator=(const EyesColour& other);
 
-    std::string getDetail() const override;
 
-    EyesColour* clone() const override;
+    [[nodiscard]] std::string getDetail() const override;
 
+    [[nodiscard]] EyesColour* clone() const override;
+
+private:
+    static void swap(EyesColour& first, EyesColour& second) noexcept;
 };
 
 
-#endif //OOP_HEADITEM_H
+#endif //OOP_EYESCOLOUR_H

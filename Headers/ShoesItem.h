@@ -10,6 +10,10 @@ public:
     explicit ShoesItem(const string &name);
 
     friend ostream &operator<<(ostream &os, const ShoesItem &item);
+
+    [[nodiscard]] std::string getDetail() const override;
+
+    [[nodiscard]] ShoesItem* clone() const override;
 };
 
 

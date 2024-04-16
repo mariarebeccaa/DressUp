@@ -7,6 +7,10 @@ ostream &operator<<(ostream &os, const TopItem &item) {
     return os;
 }
 
-//bool TopItem::verifyAvailabilityClothingObj() const {
-//    return !AvailableTopItems.empty();
-//}
+TopItem* TopItem::clone() const {
+    return new TopItem(*this);
+}
+
+std::string TopItem::getDetail() const {
+    return "You chose: " + name;
+}

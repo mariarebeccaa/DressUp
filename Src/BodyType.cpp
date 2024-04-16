@@ -21,6 +21,16 @@ BodyType* BodyType::clone() const {
     return new BodyType(*this);
 }
 
-BodyType::~BodyType() {
+BodyType::~BodyType() = default;
 
+// Constructorul de copiere
+BodyType::BodyType(const BodyType &other) : Features(other.getName()) {}
+// Operatorul de atribuire
+BodyType& BodyType::operator=(const BodyType& other) {
+    swap(*this, const_cast<BodyType &>(other));
+    return *this;
+}
+void BodyType::swap(BodyType& first, BodyType& second) noexcept {
+    using std::swap;
+    swap(first.name, second.name);
 }

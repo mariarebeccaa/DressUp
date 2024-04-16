@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <memory>
 #include <vector>
 #include "Headers/Features.h"
 #include "Headers/Clothing.h"
@@ -21,11 +20,11 @@ int main() {
     AvailableFeatures availableFeatures;
 
     //Adaugam tipuri de trasaturi la AvailableFeatures
-    auto *eyesColour1 = new EyesColour("blue almond eyes");
+    auto *eyesColour1 = new EyesColour( "blue almond eyes");
     availableFeatures.addEyesColour(*eyesColour1);
-    auto *eyesColour2 = new EyesColour("brown monolid eyes");
+    auto *eyesColour2 = new EyesColour( "brown monolid eyes");
     availableFeatures.addEyesColour(*eyesColour2);
-    auto *eyesColour3 = new EyesColour("green round eyes");
+    auto *eyesColour3 = new EyesColour( "green round eyes");
     availableFeatures.addEyesColour(*eyesColour3);
 
     auto *hairType1 = new HairType("short blonde hair");

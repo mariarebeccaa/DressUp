@@ -17,6 +17,16 @@ HairType* HairType::clone() const {
     return new HairType(*this);
 }
 
-HairType::~HairType() {
+HairType::~HairType() = default;
 
+// Constructorul de copiere
+HairType::HairType(const HairType &other) : Features(other.getName()) {}
+// Operatorul de atribuire
+HairType& HairType::operator=(const HairType& other) {
+    swap(*this, const_cast<HairType &>(other));
+    return *this;
+}
+void HairType::swap(HairType& first, HairType& second) noexcept {
+    using std::swap;
+    swap(first.name, second.name);
 }

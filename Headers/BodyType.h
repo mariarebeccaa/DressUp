@@ -17,9 +17,17 @@ public:
 
     friend ostream &operator<<(ostream &os, const BodyType &item);
 
-    std::string getDetail() const override;
+    // Constructorul de copiere
+    BodyType(const BodyType &other);
+    // Operatorul de atribuire
+    BodyType& operator=(const BodyType& other);
 
-    BodyType* clone() const;
+    [[nodiscard]] std::string getDetail() const override;
+
+    [[nodiscard]] BodyType* clone() const override;
+
+private:
+    static void swap(BodyType& first, BodyType& second) noexcept;
 };
 
 #endif //OOP_BODYTYPE_H

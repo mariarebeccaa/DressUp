@@ -32,14 +32,9 @@ public:
 
     explicit Features(string name);
     virtual ~Features();
-    // Copy constructor
-    //Features(const Features& other);
 
-    //virtual Features& operator=(const Features& other) = 0; // Assignment operator
-
-    //const string &getName() const;
     [[nodiscard]] const string &getName() const;
-    //void setName(const string &name);
+
     void setName(const string &name);
 
     [[nodiscard]] virtual Features* clone() const = 0;

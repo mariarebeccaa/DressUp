@@ -106,8 +106,10 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int headChoice;
                     std::cin >> headChoice;
-                    if (headChoice > 0 && headChoice <= int(headItems.size())) {
+                    if (headChoice > 0 && headChoice <= static_cast<int>(headItems.size())) {
                         chosenClothing.push_back(new HeadItem(headItems[headChoice - 1].getName()));
+                        std::cout << headItems[headChoice - 1].getDetail() <<"\n";
+                        std::cout <<"Wow!" << "\n";
                     }
                     break;
                 }
@@ -119,8 +121,10 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int topChoice;
                     std::cin >> topChoice;
-                    if (topChoice > 0 && topChoice <= int(topItems.size())) {
+                    if (topChoice > 0 && topChoice <= static_cast<int>(topItems.size())) {
                         chosenClothing.push_back(new TopItem(topItems[topChoice - 1].getName()));
+                        std::cout << topItems[topChoice - 1].getDetail() <<"\n";
+                        std::cout <<"Amazing!" << "\n";
                     }
                     break;
                 }
@@ -132,8 +136,10 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int buttomChoice;
                     std::cin >> buttomChoice;
-                    if (buttomChoice > 0 && buttomChoice <= int(buttomItems.size())) {
+                    if (buttomChoice > 0 && buttomChoice <= static_cast<int>(buttomItems.size())) {
                         chosenClothing.push_back(new ButtomItem(buttomItems[buttomChoice - 1].getName()));
+                        std::cout << buttomItems[buttomChoice - 1].getDetail() <<"\n";
+                        std::cout <<"Good choice!" << "\n";
                     }
                     break;
                 }
@@ -145,8 +151,10 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     }
                     int shoesChoice;
                     std::cin >> shoesChoice;
-                    if (shoesChoice > 0 && shoesChoice <= int(shoesItems.size())) {
+                    if (shoesChoice > 0 && shoesChoice <= static_cast<int>(shoesItems.size())) {
                         chosenClothing.push_back(new ShoesItem(shoesItems[shoesChoice - 1].getName()));
+                        std::cout << shoesItems[shoesChoice - 1].getDetail() <<"\n";
+                        std::cout <<"It looks great!" << "\n";
                     }
                     break;
                 }
@@ -156,5 +164,17 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
         }
     } while (choice != 0);
 
-    return chosenClothing;
+    // Downcasting cu dynamic_cast
+    for (auto clothing: chosenClothing) {
+        if (auto headItem = dynamic_cast<HeadItem *>(clothing)) {
+            std::cout << "For head: " << headItem->getDetail() << "\n";
+        } else if (auto topItem = dynamic_cast<TopItem *>(clothing)) {
+            std::cout << "For top: " << topItem->getDetail() << "\n";
+        } else if (auto buttomItem = dynamic_cast<ButtomItem *>(clothing)) {
+            std::cout << "For buttom: " << buttomItem->getDetail() << "\n";
+        } else if (auto shoesItem = dynamic_cast<ShoesItem *>(clothing)) {
+            std::cout << "For shoes: " << shoesItem->getDetail() << "\n";
+        }
+        return chosenClothing;
+    }
 }

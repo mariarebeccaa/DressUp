@@ -12,9 +12,20 @@ std::string EyesColour::getDetail() const {
 return "You chose: " + name; // Exemplu de detaliu specific trăsăturii
 }
 EyesColour* EyesColour::clone() const {
-return new EyesColour(*this);
+return new EyesColour( *this);
+}
+// Constructorul de copiere
+EyesColour::EyesColour(const EyesColour &other) : Features(other.getName()) {}
+// Operatorul de atribuire
+EyesColour& EyesColour::operator=(const EyesColour& other) {
+    swap(*this, const_cast<EyesColour &>(other));
+    return *this;
+}
+void EyesColour::swap(EyesColour& first, EyesColour& second) noexcept {
+    using std::swap;
+    swap(first.name, second.name);
 }
 
-EyesColour::~EyesColour() {
+EyesColour::~EyesColour() = default;
 
-}
+

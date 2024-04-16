@@ -12,7 +12,9 @@ public:
 
     friend ostream &operator<<(ostream &os, const HeadItem &item);
 
+    [[nodiscard]] std::string getDetail() const override;
 
+    [[nodiscard]] HeadItem* clone() const override;
 };
 
 

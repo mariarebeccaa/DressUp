@@ -10,6 +10,10 @@ public:
     explicit ButtomItem(const string &name);
 
     friend ostream &operator<<(ostream &os, const ButtomItem &item);
+
+    [[nodiscard]] std::string getDetail() const override;
+
+    [[nodiscard]] ButtomItem* clone() const override;
 };
 
 
