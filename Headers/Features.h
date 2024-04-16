@@ -29,14 +29,21 @@ protected:
     string name;
 
 public:
-   // Features(const std::string &name);
-   explicit Features(string name);
+
+    explicit Features(string name);
+    virtual ~Features();
+    // Copy constructor
+    //Features(const Features& other);
+
+    //virtual Features& operator=(const Features& other) = 0; // Assignment operator
 
     //const string &getName() const;
     [[nodiscard]] const string &getName() const;
-
     //void setName(const string &name);
-    [[maybe_unused]] void setName(const string &name);
+    void setName(const string &name);
+
+    [[nodiscard]] virtual Features* clone() const = 0;
+    [[nodiscard]] virtual std::string getDetail() const = 0;
 
 
 };

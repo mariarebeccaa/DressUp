@@ -10,6 +10,8 @@ public:
     explicit TopItem(const string &name);
 
     friend ostream &operator<<(ostream &os, const TopItem &item);
+
+    bool verifyAvailabilityClothingObj() const;
 };
 
 

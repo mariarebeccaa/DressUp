@@ -4,8 +4,8 @@
 
 #include "../Headers/AvailableFeatures.h"
 
-void AvailableFeatures::addEyesType(const EyesType &item) {
-    this->availableEyesTypes.push_back(item);
+void AvailableFeatures::addEyesColour(const EyesColour &item) {
+    this->availableEyesColours.push_back(item);
 }
 
 void AvailableFeatures::addHairType(const HairType &item) {
@@ -17,8 +17,8 @@ void AvailableFeatures::addBodyType(const BodyType &item) {
 }
 
 
-const vector<EyesType> &AvailableFeatures::getAvailableEyesTypes() const {
-    return availableEyesTypes;
+const vector<EyesColour> &AvailableFeatures::getAvailableEyesColours() const {
+    return availableEyesColours;
 }
 
 const vector<HairType> &AvailableFeatures::getAvailableHairTypes() const {
@@ -33,8 +33,8 @@ const vector<BodyType> &AvailableFeatures::getAvailableBodyTypes() const {
 std::ostream &operator<<(std::ostream &os, const AvailableFeatures &features) {
     os << "Available features details:" << std::endl;
     os << "Eyes types: " << std::endl;
-    for (const auto &eyesType : features.getAvailableEyesTypes()) {
-        os << eyesType << std::endl;
+    for (const auto &eyesColour : features.getAvailableEyesColours()) {
+        os << eyesColour << std::endl;
     }
     os << "Hair types:" << std::endl;
     for (const auto &hairType : features.getAvailableHairTypes()) {

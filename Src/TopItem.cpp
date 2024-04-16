@@ -6,3 +6,7 @@ ostream &operator<<(ostream &os, const TopItem &item) {
     os << "topItem: " << item.name;
     return os;
 }
+
+//bool TopItem::verifyAvailabilityClothingObj() const {
+//    return !AvailableTopItems.empty();
+//}

@@ -4,21 +4,22 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "Features.h"
 #include "Clothing.h"
 #include "AvailableClothing.h"
 
 class Avatar {
 private:
+
     std::string name, gender;
     int age;
     std::vector<Features*> features;
     std::vector<Clothing*> clothing;
 
 public:
-
-    Avatar(const string &name, const string &gender, int age, const vector<Features *> &features,
-           const vector<Clothing *> &clothing);
+    //Avatar(const string& name, const string& gender, int age, const vector<shared_ptr<Features>>& features, const vector<Clothing*>& clothing);
+    Avatar(const std::string& name, const std::string& gender, int age, const std::vector<Features*>& features, const std::vector<Clothing*>& clothing);
 
     Avatar(const Avatar& other);
 
@@ -28,15 +29,20 @@ public:
 
     virtual ~Avatar();
 
-    friend ostream &operator<<(ostream &os, const Avatar &avatar);
+    void addFeature(Features* feature);
+
+    // Funcție pentru a accesa detaliile trăsăturilor
+    void printFeaturesDetails() const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Avatar &avatar);
 
     void setClothing(const vector<Clothing *> &clothing);
 
-    const vector<Clothing *> &getClothing() const;
+    [[nodiscard]] const vector<Clothing *> &getClothing() const;
 
     void setFeatures(const vector<Features *> &features);
 
-    const vector<Features *> &getFeatures() const;
+    [[nodiscard]] const vector<Features *> &getFeatures() const;
 };
 
 #endif //OOP_AVATAR_H

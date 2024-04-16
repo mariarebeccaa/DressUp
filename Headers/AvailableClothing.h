@@ -21,10 +21,11 @@ public:
     void addButtomItem(const ButtomItem &item);
     void addShoesItem(const ShoesItem &item);
 
-    const vector<HeadItem> &getAvailableHeadItems() const;
-    const vector<TopItem> &getAvailableTopItems() const;
-    const vector<ButtomItem> &getAvailableButtomItems() const;
-    const vector<ShoesItem> &getAvailableShoesItems() const;
+    [[nodiscard]] const vector<HeadItem> &getAvailableHeadItems() const;
+    [[nodiscard]] const vector<TopItem> &getAvailableTopItems() const;
+    [[nodiscard]] const vector<ButtomItem> &getAvailableButtomItems() const;
+    [[nodiscard]] const vector<ShoesItem> &getAvailableShoesItems() const;
+
     friend ostream &operator<<(ostream &os, const AvailableClothing &clothing);
 
 };

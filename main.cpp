@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+//#include <memory>
 #include <vector>
 #include "Headers/Features.h"
 #include "Headers/Clothing.h"
@@ -21,55 +21,55 @@ int main() {
     AvailableFeatures availableFeatures;
 
     //Adaugam tipuri de trasaturi la AvailableFeatures
-    EyesType *eyesType1 = new EyesType("blue almond eyes");
-    availableFeatures.addEyesType(*eyesType1);
-    EyesType *eyesType2 = new EyesType("brown monolid eyes");
-    availableFeatures.addEyesType(*eyesType2);
-    EyesType *eyesType3 = new EyesType("green round eyes");
-    availableFeatures.addEyesType(*eyesType3);
+    auto *eyesColour1 = new EyesColour("blue almond eyes");
+    availableFeatures.addEyesColour(*eyesColour1);
+    auto *eyesColour2 = new EyesColour("brown monolid eyes");
+    availableFeatures.addEyesColour(*eyesColour2);
+    auto *eyesColour3 = new EyesColour("green round eyes");
+    availableFeatures.addEyesColour(*eyesColour3);
 
-    HairType *hairType1 = new HairType("short blonde hair");
+    auto *hairType1 = new HairType("short blonde hair");
     availableFeatures.addHairType(*hairType1);
-    HairType *hairType2 = new HairType("long brunette hair");
+    auto *hairType2 = new HairType("long brunette hair");
     availableFeatures.addHairType(*hairType2);
 
-    BodyType *bodyType1 = new BodyType("slim");
+    auto *bodyType1 = new BodyType("slim");
     availableFeatures.addBodyType(*bodyType1);
 
-    // Selectam hainele
+    // Selectam trasaturile
     vector<Features*> chosenFeatures = PlayerInteraction::selectFeatures(availableFeatures);
 
     // Creeam un obiect AvailableClothing
     AvailableClothing availableClothing;
 
     // Adaugăm articole de îmbrăcăminte la AvailableClothing
-    HeadItem *headItem1 = new HeadItem("hat");
+    auto *headItem1 = new HeadItem("hat");
     availableClothing.addHeadItem(*headItem1);
-    HeadItem *headItem2 = new HeadItem("cap");
+    auto *headItem2 = new HeadItem("cap");
     availableClothing.addHeadItem(*headItem2);
-    HeadItem *headItem3 = new HeadItem("scarf");
+    auto *headItem3 = new HeadItem("scarf");
     availableClothing.addHeadItem(*headItem3);
 
 
-    TopItem *topItem1 = new TopItem("T-shirt");
+    auto *topItem1 = new TopItem("T-shirt");
     availableClothing.addTopItem(*topItem1);
-    TopItem *topItem2 = new TopItem("sweatshirt");
+    auto *topItem2 = new TopItem("sweatshirt");
     availableClothing.addTopItem(*topItem2);
-    TopItem *topItem3 = new TopItem("jacket");
+    auto *topItem3 = new TopItem("jacket");
     availableClothing.addTopItem(*topItem3);
-    TopItem *topItem4 = new TopItem("top");
+    auto *topItem4 = new TopItem("top");
     availableClothing.addTopItem(*topItem4);
 
-    ButtomItem *buttomItem1 = new ButtomItem("jeans");
+    auto *buttomItem1 = new ButtomItem("jeans");
     availableClothing.addButtomItem(*buttomItem1);
-    ButtomItem *buttomItem2 = new ButtomItem("skirt");
+    auto *buttomItem2 = new ButtomItem("skirt");
     availableClothing.addButtomItem(*buttomItem2);
-    ButtomItem *buttomItem3 = new ButtomItem("pants");
+    auto *buttomItem3 = new ButtomItem("pants");
     availableClothing.addButtomItem(*buttomItem3);
 
-    ShoesItem *shoesItem1 = new ShoesItem("sneakers");
+    auto *shoesItem1 = new ShoesItem("sneakers");
     availableClothing.addShoesItem(*shoesItem1);
-    ShoesItem *shoesItem2 = new ShoesItem("sandals");
+    auto *shoesItem2 = new ShoesItem("sandals");
     availableClothing.addShoesItem(*shoesItem2);
 
     // Selectam hainele
@@ -81,7 +81,6 @@ int main() {
 
     // Afișam informațiile despre Avatar
     cout << avatar1 << endl;
-
 
     return 0;
 }

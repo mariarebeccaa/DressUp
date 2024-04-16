@@ -110,8 +110,8 @@ add_executable(${PROJECT_NAME} main.cpp
         Headers/AvailableClothing.h
         Src/PlayerInteraction.cpp
         Headers/PlayerInteraction.h
-        Src/EyesType.cpp
-        Headers/EyesType.h
+        Src/EyesColour.cpp
+        Headers/EyesColour.h
         Src/HairType.cpp
         Headers/HairType.h
         Src/BodyType.cpp

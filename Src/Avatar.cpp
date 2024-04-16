@@ -1,11 +1,13 @@
+#include <utility>
+#include <memory>
 #include "../Headers/Avatar.h"
 
-//Avatar::Avatar(const std::string &name, const std::string &gender, int age, const Features &features, Clothing *clothing)
-//        : name(name), gender(gender), age(age), features(features), clothing(clothing) {
-//    //std::cout<< "Constr de initializare Avatar\n";
-//}
+//Avatar::Avatar(std::string  name, std::string  gender, int age, const std::vector<Features*>& features, const std::vector<Clothing*>& clothing) : name(std::move(name)), gender(std::move(gender)), age(age), features(features), clothing(clothing){}
+Avatar::Avatar(const std::string& name, const std::string& gender, int age, const std::vector<Features*>& features, const std::vector<Clothing*>& clothing)
+        : name(name), gender(gender), age(age), features(features), clothing(clothing) {}
 
-Avatar::Avatar(const Avatar& other)
+
+[[maybe_unused]] Avatar::Avatar(const Avatar &other)
         : name(other.name), gender(other.gender), age(other.age), features(other.features), clothing(other.clothing) {
     //std::cout<< "Constr de copiere Avatar\n";
 }
@@ -24,9 +26,16 @@ Avatar& Avatar::operator=(const Avatar& other) {
 
 Avatar::~Avatar() = default;
 
+void Avatar::addFeature(Features* feature) {
+    features.push_back(feature);
+}
 
-Avatar::Avatar(const string &name, const string &gender, int age, const vector<Features *> &features,
-               const vector<Clothing *> &clothing) : name(name), gender(gender), age(age), features(features), clothing(clothing){}
+// Funcție pentru a accesa detaliile trăsăturilor
+void Avatar::printFeaturesDetails() const {
+    for (const auto& feature : features) {
+        std::cout << feature->getDetail() << std::endl;
+    }
+}
 
 void Avatar::setClothing(const vector<Clothing *> &clothing) {
     Avatar::clothing = clothing;

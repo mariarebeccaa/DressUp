@@ -4,21 +4,21 @@
 #include <vector>
 #include "BodyType.h"
 #include "HairType.h"
-#include "EyesType.h"
+#include "EyesColour.h"
 
 class AvailableFeatures {
 private:
-    std::vector<EyesType> availableEyesTypes;
+    std::vector<EyesColour> availableEyesColours;
     std::vector<HairType> availableHairTypes;
     std::vector<BodyType> availableBodyTypes;
 public:
-    void addEyesType(const EyesType &item);
+    void addEyesColour(const EyesColour &item);
     void addHairType(const HairType &item);
     void addBodyType(const BodyType &item);
 
-    const vector<EyesType> &getAvailableEyesTypes() const;
-    const vector<HairType> &getAvailableHairTypes() const;
-    const vector<BodyType> &getAvailableBodyTypes() const;
+    [[nodiscard]] const vector<EyesColour> &getAvailableEyesColours() const;
+    [[nodiscard]] const vector<HairType> &getAvailableHairTypes() const;
+    [[nodiscard]] const vector<BodyType> &getAvailableBodyTypes() const;
 
     friend ostream &operator<<(ostream &os, const AvailableFeatures &features);
 

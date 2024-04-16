@@ -12,8 +12,13 @@ class HairType : public Features {
 public:
     explicit HairType(const string &name);
 
+    ~HairType() override;
+
     friend ostream &operator<<(ostream &os, const HairType &item);
 
+    std::string getDetail() const override;
+
+    HairType* clone() const;
 };
 
 
