@@ -14,3 +14,5 @@ ShoesItem* ShoesItem::clone() const {
 std::string ShoesItem::getDetail() const {
     return "You chose: " + name;
 }
+
+ShoesItem::~ShoesItem() = default;

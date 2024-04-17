@@ -14,3 +14,5 @@ TopItem* TopItem::clone() const {
 std::string TopItem::getDetail() const {
     return "You chose: " + name;
 }
+
+TopItem::~TopItem() = default;

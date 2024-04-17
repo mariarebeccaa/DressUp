@@ -18,3 +18,5 @@ ButtomItem* ButtomItem::clone() const {
 std::string ButtomItem::getDetail() const {
     return "You chose: " + name;
 }
+
+ButtomItem::~ButtomItem() = default;

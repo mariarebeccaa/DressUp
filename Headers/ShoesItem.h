@@ -14,6 +14,8 @@ public:
     [[nodiscard]] std::string getDetail() const override;
 
     [[nodiscard]] ShoesItem* clone() const override;
+
+    virtual ~ShoesItem();
 };
 
 

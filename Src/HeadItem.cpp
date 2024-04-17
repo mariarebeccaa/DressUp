@@ -15,3 +15,5 @@ HeadItem* HeadItem::clone() const {
 std::string HeadItem::getDetail() const {
     return "You chose: " + name;
 }
+
+HeadItem::~HeadItem() = default;

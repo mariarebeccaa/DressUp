@@ -15,6 +15,8 @@ public:
     [[nodiscard]] std::string getDetail() const override;
 
     [[nodiscard]] HeadItem* clone() const override;
+
+    virtual ~HeadItem();
 };
 
 
