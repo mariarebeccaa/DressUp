@@ -175,6 +175,6 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
         } else if (auto shoesItem = dynamic_cast<ShoesItem *>(clothing)) {
             std::cout << "For shoes: " << shoesItem->getDetail() << "\n";
         }
-        return chosenClothing;
     }
+    return chosenClothing;
 }

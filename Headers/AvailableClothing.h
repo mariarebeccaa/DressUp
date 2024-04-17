@@ -28,6 +28,7 @@ public:
 
     friend ostream &operator<<(ostream &os, const AvailableClothing &clothing);
 
+    virtual ~AvailableClothing();
 };
 
 

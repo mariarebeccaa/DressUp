@@ -53,3 +53,5 @@ std::ostream &operator<<(std::ostream &os, const AvailableClothing &clothing) {
     return os;
 }
 
+AvailableClothing::~AvailableClothing() = default;
+
