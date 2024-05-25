@@ -3,7 +3,19 @@
 #include "../Headers/Avatar.h"
 
 Avatar::Avatar(std::string  name, std::string  gender, int age, const std::vector<Features*>& features, const std::vector<Clothing*>& clothing)
-        : name(std::move(name)), gender(std::move(gender)), age(age), features(features), clothing(clothing) {}
+        : name(std::move(name)), gender(std::move(gender)), age(age), features(features), clothing(clothing) {
+    //modif2ran
+    if (name.empty() || gender.empty() || age <= 0) {
+        throw AvatarReadException("Invalid avatar data: name, gender, or age is invalid.");
+    }
+    if (features.empty()) {
+        throw AvatarFeatureException("No features selected for the avatar.");
+    }
+    if (clothing.empty()) {
+        throw AvatarClothingException("No clothing items selected for the avatar.");
+    }
+    //endmodif
+}
 
 Avatar::~Avatar() = default;
 

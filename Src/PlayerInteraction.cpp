@@ -14,7 +14,12 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
         std::cout << "Choose the features that you want from the available ones (0 to exit): ";
         std::cin >> choice;
 
-        if (choice > 0 && choice <= 4) {
+        if (choice < 0 || choice > 3) {
+            throw AvatarFeatureException("Invalid feature choice.");
+        }
+
+        if (choice > 0) {
+        //if (choice > 0 && choice <= 4) {
             switch (choice) {
                 case 1: {
                     std::cout << "Choose an eyes type" << std::endl;
@@ -28,6 +33,8 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                         chosenFeatures.push_back(new EyesColour(eyesColours[eyesChoice - 1].getName()));
                         std::cout << eyesColours[eyesChoice - 1].getDetail() <<"\n";
                         std::cout <<"Amaizing choice!" << "\n";
+                    }else {
+                        throw AvatarFeatureException("Invalid eyes choice.");
                     }
                     break;
                 }
@@ -44,6 +51,8 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                         chosenFeatures.push_back(new HairType(hairTypes[hairChoice - 1].getName()));
                         std::cout << hairTypes[hairChoice - 1].getDetail() <<"\n";
                         std::cout <<"Wow! Keep going!" <<"\n";
+                    }else {
+                        throw AvatarFeatureException("Invalid hair choice.");
                     }
                     break;
                 }
@@ -59,6 +68,8 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                         chosenFeatures.push_back(new BodyType(bodyTypes[bodyChoice - 1].getName()));
                         std::cout << bodyTypes[bodyChoice - 1].getDetail() <<"\n";
                         std::cout <<"Wow!" << "\n";
+                    }else {
+                        throw AvatarFeatureException("Invalid body choice.");
                     }
                     break;
                 }
@@ -101,7 +112,12 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
         std::cout << "Choose the clothing item(s) that you want from the available ones (0 to exit): ";
         std::cin >> choice;
 
-        if (choice > 0 && choice <= 4) {
+       // if (choice > 0 && choice <= 4) {
+        if (choice < 0 || choice > 4) {
+            throw AvatarClothingException("Invalid clothing choice.");
+        }
+
+        if (choice > 0) {
             switch (choice) {
                 case 1: {
                     std::cout << "Choose a head item:" << "\n";
@@ -115,6 +131,8 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                         chosenClothing.push_back(new HeadItem(headItems[headChoice - 1].getName()));
                         std::cout << headItems[headChoice - 1].getDetail() <<"\n";
                         std::cout <<"Wow!" << "\n";
+                    }else {
+                        throw AvatarClothingException("Invalid head item choice.");
                     }
                     break;
                 }
@@ -130,6 +148,8 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                         chosenClothing.push_back(new TopItem(topItems[topChoice - 1].getName()));
                         std::cout << topItems[topChoice - 1].getDetail() <<"\n";
                         std::cout <<"Amazing!" << "\n";
+                    }else {
+                        throw AvatarClothingException("Invalid top item choice.");
                     }
                     break;
                 }
@@ -145,6 +165,8 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                         chosenClothing.push_back(new ButtomItem(buttomItems[buttomChoice - 1].getName()));
                         std::cout << buttomItems[buttomChoice - 1].getDetail() <<"\n";
                         std::cout <<"Good choice!" << "\n";
+                    }else {
+                        throw AvatarClothingException("Invalid bottom item choice.");
                     }
                     break;
                 }
@@ -160,6 +182,8 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                         chosenClothing.push_back(new ShoesItem(shoesItems[shoesChoice - 1].getName()));
                         std::cout << shoesItems[shoesChoice - 1].getDetail() <<"\n";
                         std::cout <<"It looks great!" << "\n";
+                    }else {
+                        throw AvatarClothingException("Invalid shoes item choice.");
                     }
                     break;
                 }

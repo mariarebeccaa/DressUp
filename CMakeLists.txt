@@ -117,7 +117,9 @@ add_executable(${PROJECT_NAME} main.cpp
         Src/BodyType.cpp
         Headers/BodyType.h
         Src/AvailableFeatures.cpp
-        Headers/AvailableFeatures.h)
+        Headers/AvailableFeatures.h
+        Src/AvatarExceptions.cpp
+        Headers/AvatarExceptions.h)
 
 ###############################################################################
 

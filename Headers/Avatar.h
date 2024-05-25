@@ -8,6 +8,7 @@
 #include "Features.h"
 #include "Clothing.h"
 #include "AvailableClothing.h"
+#include "AvatarExceptions.h"
 
 class Avatar {
 private:
