@@ -9,6 +9,7 @@
 class PlayerInteraction {
 public:
     static std::vector<Features *> selectFeatures(const AvailableFeatures &availableFeatures);
+
     static std::vector<Clothing *> selectClothing(const AvailableClothing &availableClothing);
 };
 

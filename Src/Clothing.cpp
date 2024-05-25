@@ -11,4 +11,6 @@ const string &Clothing::getName() const {
     return name;
 }
 
+Clothing::~Clothing() = default;
+
 

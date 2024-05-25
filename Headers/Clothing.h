@@ -17,6 +17,8 @@ protected:
 public:
     explicit Clothing(std::string name);
 
+    virtual ~Clothing();
+
     [[nodiscard]] const string &getName() const;
     [[nodiscard]] virtual Clothing* clone() const = 0;
     [[nodiscard]] virtual std::string getDetail() const = 0;

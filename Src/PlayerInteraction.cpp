@@ -212,3 +212,4 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
     }
     return chosenClothing;
 }
+
