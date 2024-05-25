@@ -1,7 +1,3 @@
-//
-// Created by asus on 12.04.2024.
-//
-
 #include "../Headers/ButtomItem.h"
 
 ButtomItem::ButtomItem(const string &name) : Clothing(name) {}

@@ -17,15 +17,15 @@ void AvailableFeatures::addBodyType(const BodyType &item) {
 }
 
 
-const vector<EyesColour> &AvailableFeatures::getAvailableEyesColours() const {
+const std::vector<EyesColour> &AvailableFeatures::getAvailableEyesColours() const {
     return availableEyesColours;
 }
 
-const vector<HairType> &AvailableFeatures::getAvailableHairTypes() const {
+const std::vector<HairType> &AvailableFeatures::getAvailableHairTypes() const {
     return availableHairTypes;
 }
 
-const vector<BodyType> &AvailableFeatures::getAvailableBodyTypes() const {
+const std::vector<BodyType> &AvailableFeatures::getAvailableBodyTypes() const {
     return availableBodyTypes;
 }
 

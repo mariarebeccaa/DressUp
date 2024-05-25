@@ -34,9 +34,6 @@ public:
     virtual ~Features();
 
     [[nodiscard]] const string &getName() const;
-
-    void setName(const string &name);
-
     [[nodiscard]] virtual Features* clone() const = 0;
     [[nodiscard]] virtual std::string getDetail() const = 0;
 

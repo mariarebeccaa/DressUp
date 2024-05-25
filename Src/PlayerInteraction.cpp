@@ -62,6 +62,11 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                     }
                     break;
                 }
+                default: {
+                    // Mesaj de eroare pentru opțiune invalidă
+                    std::cout << "Invalid option. Please choose again." << "\n";
+                    break;
+                }
             }
         } else if (choice != 0) {
             std::cout << "Invalid option. Please choose again." << "\n";
@@ -156,6 +161,11 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                         std::cout << shoesItems[shoesChoice - 1].getDetail() <<"\n";
                         std::cout <<"It looks great!" << "\n";
                     }
+                    break;
+                }
+                default: {
+                    // Mesaj de eroare pentru opțiune invalidă
+                    std::cout << "Invalid option. Please choose again." << "\n";
                     break;
                 }
             }

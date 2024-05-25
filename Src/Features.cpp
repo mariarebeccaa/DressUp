@@ -11,10 +11,6 @@ const string &Features::getName() const {
     return name;
 }
 
-void Features::setName(const string &name) {
-    Features::name = name;
-}
-
 Features::~Features() = default;
 
 
