@@ -197,7 +197,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
 //            std::cout << "Invalid option. Please choose again." << "\n";
 //        }
 
-    } while (choice != 0);
+    }  while (choice != 0);
 
     // Downcasting cu dynamic_cast
     for (auto clothing: chosenClothing) {
