@@ -181,7 +181,8 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                         chosenClothing.push_back(new ShoesItem(shoesItems[shoesChoice - 1].getName()));
                         std::cout << shoesItems[shoesChoice - 1].getDetail() <<"\n";
                         std::cout <<"It looks great!" << "\n";
-                    }else {
+                    }else
+                    {
                         throw AvatarClothingException("Invalid shoes item choice.");
                     }
                     break;
