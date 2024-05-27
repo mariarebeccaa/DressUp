@@ -16,10 +16,8 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
 
         if (choice < 0 || choice > 3) {
             throw AvatarFeatureException("Invalid feature choice.");
-        }
-
-        if (choice > 0) {
-        //if (choice > 0 && choice <= 4) {
+        } else if (choice > 0) {
+            //if (choice > 0 && choice <= 4) {
             switch (choice) {
                 case 1: {
                     std::cout << "Choose an eyes type" << std::endl;
@@ -79,9 +77,11 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                     break;
                 }
             }
-        } else if (choice != 0) {
-            std::cout << "Invalid option. Please choose again." << "\n";
         }
+//        else if (choice != 0) {
+//            std::cout << "Invalid option. Please choose again." << "\n";
+//        }
+
     } while (choice != 0);
 
     // Downcasting cu dynamic_cast
@@ -116,8 +116,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
         if (choice < 0 || choice > 4) {
             throw AvatarClothingException("Invalid clothing choice.");
         }
-
-        if (choice > 0) {
+        else if (choice > 0) {
             switch (choice) {
                 case 1: {
                     std::cout << "Choose a head item:" << "\n";
@@ -193,9 +192,10 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     break;
                 }
             }
-        } else if (choice != 0) {
-            std::cout << "Invalid option. Please choose again." << "\n";
-        }
+        } //else if (choice != 0) {
+//            std::cout << "Invalid option. Please choose again." << "\n";
+//        }
+
     } while (choice != 0);
 
     // Downcasting cu dynamic_cast
