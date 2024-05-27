@@ -74,23 +74,43 @@ int main() {
             // Selectam hainele
             vector<Clothing*> chosenClothing = PlayerInteraction::selectClothing(availableClothing);
 
-            // Cream un obiect Avatar utilizând hainele alese
-            Avatar avatar1("Ana", "feminin", 20, chosenFeatures, chosenClothing);
+            std::string name;
+            std::cout << "Enter name: ";
+            std::cin >> name;
+            std::cin.ignore();
+
+            std::string gender;
+            std::cout << "Enter gender: ";
+            std::cin >> gender;
+            std::cin.ignore();
+
+            int age;
+            std::cout << "Enter age: ";
+            std::cin >> age;
+            while (std::cin.fail() || age <= 0) {
+                std::cin.clear();
+                std::cin.ignore(256, '\n');
+                std::cout << "Invalid age. Please enter a positive integer: ";
+                std::cin >> age;
+            }
+            std::cin.ignore(256, '\n');
+
+            Avatar avatar1(name, gender, age, chosenFeatures, chosenClothing);
 
             // Afișam informațiile despre Avatar
             cout << avatar1 << endl;
-            avatarCreated = true;  // Setăm la true dacă avatarul a fost creat cu succes
+            avatarCreated = true;  // Setam la true dacă avatarul a fost creat cu succes
 
         } catch (const AvatarFeatureException& e) {
-            cerr << "Feature selection error: " << e.what() << endl;
+            cout << "Feature selection error: " << e.what() << endl;
         } catch (const AvatarClothingException& e) {
-            cerr << "Clothing selection error: " << e.what() << endl;
+            cout << "Clothing selection error: " << e.what() << endl;
         } catch (const AvatarException& e) {
-            cerr << "Avatar creation error: " << e.what() << endl;
+            cout << "Avatar creation error: " << e.what() << endl;
         } catch (const std::exception& e) {
-            cerr << "Standard exception: " << e.what() << endl;
+            cout << "Standard exception: " << e.what() << endl;
         } catch (...) {
-            cerr << "Unknown error occurred." << endl;
+            cout << "Unknown error occurred." << endl;
         }
 
         if (!avatarCreated) {

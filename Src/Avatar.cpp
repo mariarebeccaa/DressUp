@@ -5,7 +5,7 @@
 Avatar::Avatar(std::string  name, std::string  gender, int age, const std::vector<Features*>& features, const std::vector<Clothing*>& clothing)
         : name(std::move(name)), gender(std::move(gender)), age(age), features(features), clothing(clothing) {
     //modif2ran
-    if (name.empty() || gender.empty() || age <= 0) {
+    if (this->name.empty() || this->gender.empty() || this->age <= 0) {
         throw AvatarReadException("Invalid avatar data: name, gender, or age is invalid.");
     }
     if (features.empty()) {

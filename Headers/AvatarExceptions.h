@@ -1,8 +1,6 @@
 #ifndef OOP_AVATAREXCEPTIONS_H
 #define OOP_AVATAREXCEPTIONS_H
 
-// AvatarException.h
-
 #include <exception>
 #include <string>
 #include <utility>

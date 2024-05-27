@@ -6,6 +6,8 @@
 #include "AvailableFeatures.h"
 #include <vector>
 #include "AvatarExceptions.h"
+#include "Avatar.h"
+
 class PlayerInteraction {
 public:
     static std::vector<Features *> selectFeatures(const AvailableFeatures &availableFeatures);
