@@ -119,7 +119,10 @@ add_executable(${PROJECT_NAME} main.cpp
         Src/AvailableFeatures.cpp
         Headers/AvailableFeatures.h
         Src/AvatarExceptions.cpp
-        Headers/AvatarExceptions.h)
+        Headers/AvatarExceptions.h
+        Src/RandomGenerationStrategy.cpp
+        Headers/RandomGenerationStrategy.h
+)
 
 ###############################################################################
 

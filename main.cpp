@@ -14,6 +14,8 @@
 using namespace std;
 
 int main() {
+    vector<Features*> chosenFeatures;
+    vector<Clothing*> chosenClothing;
     bool avatarCreated = false;
     while (!avatarCreated) {
         try {
@@ -36,8 +38,22 @@ int main() {
             auto *bodyType1 = new BodyType("slim");
             availableFeatures.addBodyType(*bodyType1);
 
-            // Selectam trasaturile
-            vector<Features*> chosenFeatures = PlayerInteraction::selectFeatures(availableFeatures);
+            // Alegem între a introduce manual sau a genera aleatoriu trăsăturile
+            char choice;
+            cout << "Do you want to choose features manually or generate them randomly? (m/r): ";
+            cin >> choice;
+            cin.ignore();
+
+            if (choice == 'm' || choice == 'M')
+                chosenFeatures = PlayerInteraction::selectFeatures(availableFeatures);
+            else if (choice == 'r' || choice == 'R') {
+                SimpleRandomGenerationStrategy randomStrategy;
+                PlayerInteraction::setRandomStrategy(&randomStrategy);
+                chosenFeatures = PlayerInteraction::generateRandomFeatures(availableFeatures);
+            } else {
+                cout << "Invalid choice. Please try again." << endl;
+                continue;
+            }
 
             // Creeam un obiect AvailableClothing
             AvailableClothing availableClothing;
@@ -71,8 +87,23 @@ int main() {
             auto *shoesItem2 = new ShoesItem("sandals");
             availableClothing.addShoesItem(*shoesItem2);
 
-            // Selectam hainele
-            vector<Clothing*> chosenClothing = PlayerInteraction::selectClothing(availableClothing);
+            // Alegem între a introduce manual sau a genera aleatoriu hainele
+            cout << "Do you want to choose clothing manually or generate them randomly? (m/r): ";
+            cin >> choice;
+            cin.ignore();
+
+            if (choice == 'm' || choice == 'M') {
+                chosenClothing = PlayerInteraction::selectClothing(availableClothing);
+
+            } else if (choice == 'r' || choice == 'R') {
+                SimpleRandomGenerationStrategy randomStrategy;
+                PlayerInteraction::setRandomStrategy(&randomStrategy);
+                chosenClothing= PlayerInteraction::generateRandomClothing(availableClothing);
+            } else {
+                cout << "Invalid choice. Please try again." << endl;
+                continue;
+            }
+
 
             std::string name;
             std::cout << "Enter name: ";
@@ -125,3 +156,5 @@ int main() {
 
     return 0;
 }
+
+

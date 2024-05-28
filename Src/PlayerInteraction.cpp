@@ -1,7 +1,39 @@
 #include <iostream>
 #include "../Headers/PlayerInteraction.h"
 
+// Inițializare membru static
+const RandomGenerationStrategy* PlayerInteraction::randomStrategy = nullptr;
+
+std::mutex PlayerInteraction::randomStrategyMutex;
+
+PlayerInteraction::PlayerInteraction() = default;
+
+PlayerInteraction::~PlayerInteraction() {
+    delete randomStrategy;
+}
+
+void PlayerInteraction::setRandomStrategy(const RandomGenerationStrategy* strategy) {
+    std::lock_guard<std::mutex> lock(randomStrategyMutex);
+    randomStrategy = strategy;
+}
+
+int PlayerInteraction::getRandomChoice(int maxChoice) {
+    if (randomStrategy) {
+        // Blocare mutex
+        std::lock_guard<std::mutex> lock(randomStrategyMutex);
+        return randomStrategy->getRandomChoice(maxChoice);
+    } else {
+        // Dacă nu exista o strategie setata, generam aleatoriu folosind metoda simpla
+        static std::random_device rd;
+        static std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> dist(1, maxChoice);
+        return dist(gen);
+    }
+}
+
+
 std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeatures &availableFeatures) {
+
     std::vector<Features *> chosenFeatures;
 
     std::cout << "Available features:" << "\n";
@@ -17,7 +49,6 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
         if (choice < 0 || choice > 3) {
             throw AvatarFeatureException("Invalid feature choice.");
         } else if (choice > 0) {
-            //if (choice > 0 && choice <= 4) {
             switch (choice) {
                 case 1: {
                     std::cout << "Choose an eyes type" << std::endl;
@@ -78,9 +109,6 @@ std::vector<Features *> PlayerInteraction::selectFeatures(const AvailableFeature
                 }
             }
         }
-//        else if (choice != 0) {
-//            std::cout << "Invalid option. Please choose again." << "\n";
-//        }
 
     } while (choice != 0);
 
@@ -112,7 +140,6 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
         std::cout << "Choose the clothing item(s) that you want from the available ones (0 to exit): ";
         std::cin >> choice;
 
-       // if (choice > 0 && choice <= 4) {
         if (choice < 0 || choice > 4) {
             throw AvatarClothingException("Invalid clothing choice.");
         }
@@ -193,9 +220,7 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
                     break;
                 }
             }
-        } //else if (choice != 0) {
-//            std::cout << "Invalid option. Please choose again." << "\n";
-//        }
+        }
 
     }  while (choice != 0);
 
@@ -214,3 +239,73 @@ std::vector<Clothing *> PlayerInteraction::selectClothing(const AvailableClothin
     return chosenClothing;
 }
 
+std::vector<Features*> PlayerInteraction::generateRandomFeatures(const AvailableFeatures &availableFeatures) {
+    std::vector<Features*> chosenFeatures;
+
+    if (!availableFeatures.getAvailableEyesColours().empty()) {
+        int eyesIndex = getRandomChoice(static_cast<int>(availableFeatures.getAvailableEyesColours().size())) - 1;
+        chosenFeatures.push_back(new EyesColour(availableFeatures.getAvailableEyesColours()[eyesIndex].getName()));
+    }
+
+    if (!availableFeatures.getAvailableHairTypes().empty()) {
+        int hairIndex = getRandomChoice(static_cast<int>(availableFeatures.getAvailableHairTypes().size())) - 1;
+        chosenFeatures.push_back(new HairType(availableFeatures.getAvailableHairTypes()[hairIndex].getName()));
+    }
+
+    if (!availableFeatures.getAvailableBodyTypes().empty()) {
+        int bodyIndex = getRandomChoice(static_cast<int>(availableFeatures.getAvailableBodyTypes().size())) - 1;
+        chosenFeatures.push_back(new BodyType(availableFeatures.getAvailableBodyTypes()[bodyIndex].getName()));
+    }
+
+    std::cout << "Generated random features:\n";
+    for (const auto& feature : chosenFeatures) {
+        if (auto eyesColour = dynamic_cast<EyesColour*>(feature)) {
+            std::cout << "Eyes: " << eyesColour->getDetail() << "\n";
+        } else if (auto hairType = dynamic_cast<HairType*>(feature)) {
+            std::cout << "Hair: " << hairType->getDetail() << "\n";
+        } else if (auto bodyType = dynamic_cast<BodyType*>(feature)) {
+            std::cout << "Body: " << bodyType->getDetail() << "\n";
+        }
+    }
+
+    return chosenFeatures;
+}
+
+std::vector<Clothing *> PlayerInteraction::generateRandomClothing(const AvailableClothing &availableClothing) {
+    std::vector<Clothing *> chosenClothing;
+
+    if (!availableClothing.getAvailableHeadItems().empty()) {
+        int headIndex = getRandomChoice(static_cast<int>(availableClothing.getAvailableHeadItems().size())) - 1;
+        chosenClothing.push_back(new HeadItem(availableClothing.getAvailableHeadItems()[headIndex].getName()));
+    }
+
+    if (!availableClothing.getAvailableTopItems().empty()) {
+        int topIndex = getRandomChoice(static_cast<int>(availableClothing.getAvailableTopItems().size())) - 1;
+        chosenClothing.push_back(new TopItem(availableClothing.getAvailableTopItems()[topIndex].getName()));
+    }
+
+    if (!availableClothing.getAvailableButtomItems().empty()) {
+        int bottomIndex = getRandomChoice(static_cast<int>(availableClothing.getAvailableButtomItems().size())) - 1;
+        chosenClothing.push_back(new ButtomItem(availableClothing.getAvailableButtomItems()[bottomIndex].getName()));
+    }
+
+    if (!availableClothing.getAvailableShoesItems().empty()) {
+        int shoesIndex = getRandomChoice(static_cast<int>(availableClothing.getAvailableShoesItems().size())) - 1;
+        chosenClothing.push_back(new ShoesItem(availableClothing.getAvailableShoesItems()[shoesIndex].getName()));
+    }
+
+    std::cout << "Generated random clothing:\n";
+    for (const auto& clothing : chosenClothing) {
+        if (auto head = dynamic_cast<HeadItem*>(clothing)) {
+            std::cout << "Head: " << head->getDetail() << "\n";
+        } else if (auto top = dynamic_cast<TopItem*>(clothing)) {
+            std::cout << "Top: " << top->getDetail() << "\n";
+        } else if (auto bottom = dynamic_cast<ButtomItem*>(clothing)) {
+            std::cout << "Bottom: " << bottom->getDetail() << "\n";
+        } else if (auto shoes = dynamic_cast<ShoesItem*>(clothing)) {
+            std::cout << "Shoes: " << shoes->getDetail() << "\n";
+        }
+    }
+
+    return chosenClothing;
+}
