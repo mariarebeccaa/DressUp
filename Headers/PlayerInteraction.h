@@ -12,7 +12,7 @@
 class PlayerInteraction {
 private:
     static const RandomGenerationStrategy* randomStrategy;
-    static std::mutex randomStrategyMutex;
+
 public:
     PlayerInteraction(); // Constructor pentru a seta strategia implicita
     virtual ~PlayerInteraction(); // Destructor pentru a elibera memoria alocată pentru strategie

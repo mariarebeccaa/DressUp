@@ -4,8 +4,6 @@
 // Inițializare membru static
 const RandomGenerationStrategy* PlayerInteraction::randomStrategy = nullptr;
 
-std::mutex PlayerInteraction::randomStrategyMutex;
-
 PlayerInteraction::PlayerInteraction() = default;
 
 PlayerInteraction::~PlayerInteraction() {
@@ -13,14 +11,11 @@ PlayerInteraction::~PlayerInteraction() {
 }
 
 void PlayerInteraction::setRandomStrategy(const RandomGenerationStrategy* strategy) {
-    std::lock_guard<std::mutex> lock(randomStrategyMutex);
     randomStrategy = strategy;
 }
 
 int PlayerInteraction::getRandomChoice(int maxChoice) {
     if (randomStrategy) {
-        // Blocare mutex
-        std::lock_guard<std::mutex> lock(randomStrategyMutex);
         return randomStrategy->getRandomChoice(maxChoice);
     } else {
         // Dacă nu exista o strategie setata, generam aleatoriu folosind metoda simpla

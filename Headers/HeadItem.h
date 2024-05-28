@@ -16,7 +16,7 @@ public:
 
     [[nodiscard]] HeadItem* clone() const override;
 
-    virtual ~HeadItem();
+    ~HeadItem() override;
 };
 
 

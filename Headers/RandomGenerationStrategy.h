@@ -1,7 +1,3 @@
-//
-// Created by asus on 28.05.2024.
-//
-
 #ifndef OOP_RANDOMGENERATIONSTRATEGY_H
 #define OOP_RANDOMGENERATIONSTRATEGY_H
 #include <random>
